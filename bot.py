@@ -54,9 +54,33 @@ search_button.click()
 
 time.sleep(5)
 
-#sorting flight based on price aka saving money
-dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "searchResultsSortOptions"))))
-dropdown.select_by_value("price")
+#sorting departing flight based on price aka saving money
+departing_dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "searchResultsSortOptions"))))
+departing_dropdown.select_by_value("price")
+
+# selecting the first  flight for lowest cost for departure
+roundtrip_button = WebDriverWait(browser,2).until(
+    EC.element_to_be_clickable((By.XPATH, '//*[@id="slice0Flight17MainCabin"]'))
+)
+roundtrip_button.click()
+
+time.sleep(4)
+
+#sorting cheapest returning flight
+arriving_dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "searchResultsSortOptions"))))
+arriving_dropdown.select_by_value("price")
+
+# selecting first flight back after being sorted
+roundtrip_button2 = WebDriverWait(browser,2).until(
+    EC.element_to_be_clickable((By.XPATH, '//*[@id="slice1Flight1MainCabin"]'))
+)
+roundtrip_button2.click()
+
+#close pop up that asks for upgrading flight 
+popup_close = WebDriverWait(browser, 5).until(
+    EC.element_to_be_clickable((By.ID, "mainCabinUpsellDialogClose"))
+)
+popup_close.click()
 
 #### *** GOOGLE SEARCH FLIGHTS *****
 
