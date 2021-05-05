@@ -20,55 +20,95 @@ options = webdriver.FirefoxOptions()
  
 browser = webdriver.Firefox(executable_path=geckodriver, options=options)
 
-homePage = r"https://www.southwest.com/"
-googleHome = r"https://google.com/"
+aalinesHome = r"https://www.aa.com/homePage.do"
 
-browser.get(googleHome)
+browser.get(aalinesHome)
 browser.maximize_window()
 
-search_field = browser.find_element_by_xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")
-search_field.send_keys("Flight from Pittsburgh to Las Vegas")
+#departing airport
+depart_city_field = browser.find_element_by_name("originAirport")
+depart_city_field.clear()
+depart_city_field.send_keys("PIT")
 
-google_search_button = WebDriverWait(browser, 2).until(
-    EC.element_to_be_clickable((By.CLASS_NAME, "gNO89b"))
-)
-google_search_button.click()
+#destination airport
+arrive_city_field = browser.find_element_by_name("destinationAirport")
+arrive_city_field.clear()
+arrive_city_field.send_keys("TPA")
 
-show_flights_button = WebDriverWait(browser, 2).until(
-    EC.element_to_be_clickable((By.CLASS_NAME, "wUrVib"))
-)
-show_flights_button.click()
+#depart date
+depart_date_field = browser.find_element_by_name("departDate")
+depart_date_field.send_keys("08/19/2021")
+
+#return date
+arrive_date_field = browser.find_element_by_name("returnDate")
+arrive_date_field.send_keys("08/24/2021")
 
 time.sleep(2)
 
-#fill in your email and password creds "your email" "your pass"
-depart_field = browser.find_element_by_css_selector(".uNiB1 > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)")
-depart_field.click()
-time.sleep(1)
-depart_field.send_keys("Wed, Mar 31")
-arrive_field = browser.find_element_by_css_selector(".uNiB1 > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > input:nth-child(1)")
-arrive_field.click()
-arrive_field.click()
-arrive_field.click()
-time.sleep(1)
-arrive_field.send_keys("Sun, Apr 4")
-
-#finalize date button
-date_button = WebDriverWait(browser, 2).until(
-    EC.element_to_be_clickable((By.CLASS_NAME, "VfPpkd-Jh9lGc"))
-)
-date_button.click()
-
-time.sleep(5000)
-depart_date_field = browser.find_element_by_xpath("/html/body/c-wiz[2]/div/div[2]/div/c-wiz/div/c-wiz/div[2]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/input")
-depart_date_field.send_keys("3/31")
-return_date_field = browser.find_element_by_id("LandingAirBookingSearchForm_returnDate")
-return_date_field.send_keys("4/04")
-
-time.sleep(10)
-
+#finding and clicking the search button
 search_button = WebDriverWait(browser, 2).until(
-            EC.element_to_be_clickable((By.ID, "LandingAirBookingSearchForm_submit-button"))
-            )
+    EC.element_to_be_clickable((By.ID, "flightSearchFormSubmitButton"))
+)
+
 search_button.click()
-print("search button clicked")
+
+time.sleep(5)
+
+#sorting flight based on price aka saving money
+dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "searchResultsSortOptions"))))
+dropdown.select_by_value("price")
+
+#### *** GOOGLE SEARCH FLIGHTS *****
+
+# homePage = r"https://www.southwest.com/"
+# googleHome = r"https://google.com/"
+
+# browser.get(googleHome)
+# browser.maximize_window()
+
+# search_field = browser.find_element_by_xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")
+# search_field.send_keys("Flight from Pittsburgh to Las Vegas")
+
+# google_search_button = WebDriverWait(browser, 2).until(
+#     EC.element_to_be_clickable((By.CLASS_NAME, "gNO89b"))
+# )
+# google_search_button.click()
+
+# show_flights_button = WebDriverWait(browser, 2).until(
+#     EC.element_to_be_clickable((By.CLASS_NAME, "wUrVib"))
+# )
+# show_flights_button.click()
+
+# time.sleep(2)
+
+# #fill in your email and password creds "your email" "your pass"
+# depart_field = browser.find_element_by_css_selector(".uNiB1 > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)")
+# depart_field.click()
+# time.sleep(1)
+# depart_field.send_keys("Thu, Aug 19")
+# arrive_field = browser.find_element_by_css_selector(".uNiB1 > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > input:nth-child(1)")
+# arrive_field.click()
+# arrive_field.click()
+# arrive_field.click()
+# time.sleep(1)
+# arrive_field.send_keys("Mon, Aug 23")
+
+# #finalize date button
+# date_button = WebDriverWait(browser, 2).until(
+#     EC.element_to_be_clickable((By.CLASS_NAME, "VfPpkd-Jh9lGc"))
+# )
+# date_button.click()
+
+# time.sleep(5000)
+# depart_date_field = browser.find_element_by_xpath("/html/body/c-wiz[2]/div/div[2]/div/c-wiz/div/c-wiz/div[2]/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/input")
+# depart_date_field.send_keys("3/31")
+# return_date_field = browser.find_element_by_id("LandingAirBookingSearchForm_returnDate")
+# return_date_field.send_keys("4/04")
+
+# time.sleep(10)
+
+# search_button = WebDriverWait(browser, 2).until(
+#             EC.element_to_be_clickable((By.ID, "LandingAirBookingSearchForm_submit-button"))
+#             )
+# search_button.click()
+# print("search button clicked")
