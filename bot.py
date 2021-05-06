@@ -82,6 +82,12 @@ popup_close = WebDriverWait(browser, 5).until(
 )
 popup_close.click()
 
+#continue as guest
+guest_button = WebDriverWait(browser, 5).until(
+    EC.element_to_be_clickable((By.ID, "button_continue_guest"))
+)
+guest_button.click()
+
 #### *** GOOGLE SEARCH FLIGHTS *****
 
 # homePage = r"https://www.southwest.com/"
