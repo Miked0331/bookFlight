@@ -88,6 +88,60 @@ guest_button = WebDriverWait(browser, 5).until(
 )
 guest_button.click()
 
+## passenger details
+
+#first name
+first_name = browser.find_element_by_id("passengers0.personalInformationForm.firstName")
+first_name.send_keys("John")
+
+#last name
+last_name = browser.find_element_by_id(("passengers0.personalInformationForm.lastName"))
+last_name.send_keys("Doe")
+
+#DOB
+month_dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "passengers0.dateComponentForm.month"))))
+month_dropdown.select_by_value("2")
+
+day_dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "passengers0.dateComponentForm.day"))))
+day_dropdown.select_by_value("7")
+
+year_dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "passengers0.dateComponentForm.year"))))
+year_dropdown.select_by_value("1993")
+
+#gender
+gender_dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "passengers0.personalInformationForm.gender"))))
+gender_dropdown.select_by_value("X")
+
+#country 
+country_dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "passengers0.residencyInfo.country"))))
+country_dropdown.select_by_value("US")
+
+#state 
+state_dropdown = Select(WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.ID, "passengers0.residencyInfo.state"))))
+state_dropdown.select_by_value("PA")
+
+## Trip contact info
+
+#email address
+primary_email = browser.find_element_by_id("tripContact.email")
+primary_email.send_keys("slimjim1121@gmail.com")
+
+#confirm email address
+confirm_primary_email = browser.find_element_by_id("tripContact.confirmEmail")
+confirm_primary_email.send_keys("slimjim1121@gmail.com")
+
+#phone number
+phone_number = browser.find_element_by_id("tripContact.phones0.number")
+phone_number.send_keys("412-223-5534")
+
+#continue and confirm informaion
+passenger_continue_button = WebDriverWait(browser, 2).until(
+    EC.element_to_be_clickable((By.ID, "passenger_button"))
+)
+passenger_continue_button.click()
+
+
+
 #### *** GOOGLE SEARCH FLIGHTS *****
 
 # homePage = r"https://www.southwest.com/"
