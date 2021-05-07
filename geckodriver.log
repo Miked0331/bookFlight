@@ -2352,3 +2352,27 @@ webdriverClickElement@chrome://marionette/content/interaction.js:179:31
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1620333267878	geckodriver	INFO	Listening on 127.0.0.1:49410
+1620333270948	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Main\\AppData\\Local\\Temp\\rust_mozprofile80sagI"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1620333272795	Marionette	INFO	Listening on port 49420
+1620333273010	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://tags.tiqcdn.com/utag/aa/main/prod/utag.js, line 141: SyntaxError: JSON.parse: unexpected character at line 1 column 2 of the JSON data
+JavaScript error: https://tags.tiqcdn.com/utag/aa/main/prod/utag.js, line 141: SyntaxError: JSON.parse: unexpected character at line 1 column 2 of the JSON data
+JavaScript error: https://tags.tiqcdn.com/utag/aa/main/prod/utag.js, line 141: SyntaxError: JSON.parse: unexpected character at line 1 column 2 of the JSON data
+1620333288644	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:231:19
+TimedPromise@chrome://marionette/content/sync.js:216:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:433:10
+webdriverClickElement@chrome://marionette/content/interaction.js:179:31
+JavaScript error: https://tags.tiqcdn.com/utag/aa/main/prod/utag.js, line 141: SyntaxError: JSON.parse: unexpected character at line 1 column 2 of the JSON data
+JavaScript error: https://tags.tiqcdn.com/utag/aa/main/prod/utag.js, line 141: SyntaxError: JSON.parse: unexpected character at line 1 column 2 of the JSON data
+1620333295445	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:231:19
+TimedPromise@chrome://marionette/content/sync.js:216:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:433:10
+webdriverClickElement@chrome://marionette/content/interaction.js:179:31
+1620333505936	Marionette	INFO	Stopped listening on port 49420
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
